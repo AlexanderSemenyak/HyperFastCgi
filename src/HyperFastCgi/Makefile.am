@@ -219,8 +219,8 @@ if NET_2_0
 endif
 if NET_4_0
 	$(GACUTIL4) $(GACUTIL_FLAGS) -i $(ASSEMBLY4)
-	mkdir -p $(programfiles4dir)
-	cp -fv 4.0/$(ASSEMBLY_MDB) $(programfiles4dir)
+	sudo mkdir -p $(programfiles4dir)
+	sudo cp -fv 4.0/$(ASSEMBLY_MDB) $(programfiles4dir)
 endif
 
 uninstall-local:
