@@ -2,7 +2,8 @@ FROM ubuntu:18.04
 
 LABEL maintainer="Ascensio System SIA <support@onlyoffice.com>"
 
-ARG VERSION="0.4-4"
+ARG VERSION="0.4"
+ARG RELEASE="4"
 
 RUN apt-get -y update && \
     apt-get -yq install gnupg2 && \
@@ -14,8 +15,9 @@ RUN apt-get -y update && \
     git clone https://github.com/ONLYOFFICE/HyperFastCgi.git && \
     cd HyperFastCgi && \
     mkdir -p rpmbuild/BUILD rpmbuild/RPMS rpmbuild/SOURCES rpmbuild/SPECS rpmbuild/SRPMS && \
-    git archive --format=tar --prefix=mono-webserver-hyperfastcgi-${VERSION}/ HEAD > rpmbuild/SOURCES/mono-webserver-hyperfastcgi-${VERSION}.tar && \
-    DESTDIR="/HyperFastCgi/rpmbuild/BUILDROOT/mono-webserver-hyperfastcgi-${VERSION}.x86_64" rpmbuild -bb --define "_topdir /HyperFastCgi/rpmbuild" hyperfastcgi.spec && \
-    alien -k /HyperFastCgi/rpmbuild/RPMS/noarch/mono-webserver-hyperfastcgi-${VERSION}.noarch.rpm
-
-
+    git archive --format=tar --prefix=mono-webserver-hyperfastcgi-${VERSION}-${RELEASE}/ HEAD > rpmbuild/SOURCES/mono-webserver-hyperfastcgi-${VERSION}-${RELEASE}.tar && \
+    DESTDIR="/HyperFastCgi/rpmbuild/BUILDROOT/mono-webserver-hyperfastcgi--${VERSION}-${RELEASE}.x86_64" rpmbuild -bb --define "_topdir /HyperFastCgi/rpmbuild" \
+    --define "package_header_tag_version ${VERSION}" \
+    --define "package_header_tag_release ${RELEASE}" \
+    hyperfastcgi.spec && \
+    alien -k /HyperFastCgi/rpmbuild/RPMS/noarch/mono-webserver-hyperfastcgi--${VERSION}-${RELEASE}.noarch.rpm

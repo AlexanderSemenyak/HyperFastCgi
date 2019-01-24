@@ -2,8 +2,8 @@ Name:           mono-webserver-hyperfastcgi
 Url:            https://github.com/xplicit/HyperFastCgi
 License:        X11/MIT
 Group:          Productivity/Networking/Web/Servers
-Version:        0.4
-Release:        4
+Version:        %{package_header_tag_version}
+Release:        %{package_header_tag_release}
 Summary:        Mono WebServer HyperFastCgi
 Source:         %{name}-%{version}-%{release}.tar
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
