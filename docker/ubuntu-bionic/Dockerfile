@@ -16,8 +16,8 @@ RUN apt-get -y update && \
     cd HyperFastCgi && \
     mkdir -p rpmbuild/BUILD rpmbuild/RPMS rpmbuild/SOURCES rpmbuild/SPECS rpmbuild/SRPMS && \
     git archive --format=tar --prefix=mono-webserver-hyperfastcgi-${VERSION}-${RELEASE}/ HEAD > rpmbuild/SOURCES/mono-webserver-hyperfastcgi-${VERSION}-${RELEASE}.tar && \
-    DESTDIR="/HyperFastCgi/rpmbuild/BUILDROOT/mono-webserver-hyperfastcgi--${VERSION}-${RELEASE}.x86_64" rpmbuild -bb --define "_topdir /HyperFastCgi/rpmbuild" \
+    DESTDIR="/HyperFastCgi/rpmbuild/BUILDROOT/mono-webserver-hyperfastcgi-${VERSION}-${RELEASE}.x86_64" rpmbuild -bb --define "_topdir /HyperFastCgi/rpmbuild" \
     --define "package_header_tag_version ${VERSION}" \
     --define "package_header_tag_release ${RELEASE}" \
     hyperfastcgi.spec && \
-    alien -k /HyperFastCgi/rpmbuild/RPMS/noarch/mono-webserver-hyperfastcgi--${VERSION}-${RELEASE}.noarch.rpm
+    alien -k /HyperFastCgi/rpmbuild/RPMS/noarch/mono-webserver-hyperfastcgi-${VERSION}-${RELEASE}.noarch.rpm
