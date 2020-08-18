@@ -21,3 +21,7 @@ RUN apt-get -y update && \
     --define "package_header_tag_release ${RELEASE}" \
     hyperfastcgi.spec && \
     alien -k /HyperFastCgi/rpmbuild/RPMS/noarch/mono-webserver-hyperfastcgi-${VERSION}-${RELEASE}.noarch.rpm
+
+VOLUME ["/artifacts"]
+
+RUN cp /HyperFastCgi/mono-webserver-hyperfastcgi_${VERSION}-${RELEASE}_all.deb /artifacts
