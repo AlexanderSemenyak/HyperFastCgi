@@ -4,6 +4,7 @@ LABEL maintainer="Ascensio System SIA <support@onlyoffice.com>"
 
 ARG VERSION="0.4"
 ARG RELEASE="8"
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -y update && \
     apt-get -yq install gnupg2 && \
